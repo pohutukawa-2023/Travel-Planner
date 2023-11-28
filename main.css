@@ -1,0 +1,86 @@
+/* body {
+  background-color: #fff;
+} */
+
+/* .homeContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+} */
+
+/* .body-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+
+/* body {
+  background-color: #fff;
+  color: #212529;
+  font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+.container-fixed-padding {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  width: 100%;
+}
+
+/* @media (max-width: 991.98px) .LandingPageHero__leadContainer {
+  padding-top: 24px;
+} */
+
+/* .LandingPageHero__leadContainer {
+  min-height: calc(50.4vw vw - 64px);
+} */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8ffd2;
+  color: #8adab2;
+}
+
+.homeContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.homeContent h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.homeContent p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #df826c;
+  color: #f8ffd2;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #8adab2;
+}
