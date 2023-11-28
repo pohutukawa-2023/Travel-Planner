@@ -1,11 +1,12 @@
 import express from 'express'
 
 import * as db from '../db/suggestions'
+import checkJwt from '../auth0.ts'
 
 const router = express.Router()
 
 // GET /api/v1/suggestions/search?city=Auckland
-router.get('/search', async (req, res) => {
+router.get('/search', checkJwt, async (req, res) => {
   const targetCity = req.query.city as string
 
   if (!targetCity) {

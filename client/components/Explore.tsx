@@ -3,11 +3,14 @@ import Cities from './Cities'
 import SetDate from './SetDate'
 import { useState } from 'react'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
 function Explore() {
-  const [input, setInput] = useState('')
-  const [date, setDate] = useState('')
-  async function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setInput(e.currentTarget.value)
+  const { isAuthenticated, loginWithRedirect } = useAuth0()
+
+  if (!isAuthenticated) {
+    loginWithRedirect()
+    return null
   }
 
   return (

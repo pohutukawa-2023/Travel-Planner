@@ -1,12 +1,5 @@
-import ExploreCards from './ExploreCards'
-
 function ExploreOption() {
-  return (
-    <>
-      <h2>Expolore your trips</h2>
-      <ExploreCards city="Paris" />
-    </>
-  )
+  return <h2>Expolore your trips</h2>
 }
 
 export default ExploreOption
