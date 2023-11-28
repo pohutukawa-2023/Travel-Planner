@@ -7,23 +7,30 @@ interface Props {
 function ExploreCards(props: Props) {
   return (
     <>
-      <Link to="/places">
-        <img src="../public/city-paris.jpg" alt="Paris" />
+      <div className="container">
+        <div className="block">
+          <Link to="/places" className="link">
+            <img src="../public/city-paris.jpg" alt="Paris" />
 
-        <p>{`Top places for ${props.city}`}</p>
-      </Link>
+            <p>{`Top places for ${props.city}`}</p>
+          </Link>
+        </div>
 
-      <Link to="/resturants">
-        <img src="../public/hotel-paris.jpg" alt="Paris Resturants" />
+        <div className="block">
+          <Link to="/resturants" className="link">
+            <img src="../public/hotel-paris.jpg" alt="Paris Resturants" />
 
-        <p>{`Top places for ${props.city}`}</p>
-      </Link>
+            <p>{`Top places for ${props.city}`}</p>
+          </Link>
+        </div>
+        <div className="block">
+          <Link to="/hotels" className="link">
+            <img src="../public/resturant-paris.jpg" alt="Paris" />
 
-      <Link to="/hotels">
-        <img src="../public/resturant-paris.jpg" alt="Paris" />
-
-        <p>{`Top places for ${props.city}`}</p>
-      </Link>
+            <p>{`Top places for ${props.city}`}</p>
+          </Link>
+        </div>
+      </div>
     </>
   )
 }

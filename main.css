@@ -84,3 +84,27 @@ body {
   font-size: 14px;
   color: #999;
 }
+
+.container {
+  display: flex;
+}
+
+.block {
+  width: 33.33%;
+  text-align: center;
+}
+
+.block img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.block p {
+  margin-top: 10px;
+}
+
+.link {
+  text-decoration: none;
+}

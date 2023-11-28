@@ -1,10 +1,6 @@
-import { Fab, Zoom } from '@mui/material'
 import { useRef, useState } from 'react'
-import TravelExploreIcon from '@mui/icons-material/TravelExplore'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 function Cities() {
-  const [isExpanded, setExpanded] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('')
 
@@ -25,10 +21,6 @@ function Cities() {
 
   const handleInputClick = () => {
     setShowDropdown(true)
-  }
-
-  function expand() {
-    setExpanded(true)
   }
 
   const handleCitySelect = (city: string) => {
