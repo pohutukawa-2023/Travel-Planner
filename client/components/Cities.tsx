@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react'
+import { InputHTMLAttributes, useRef, useState } from 'react'
 
-function Cities() {
+type InputAttribues = InputHTMLAttributes<HTMLInputElement>
+
+function Cities({ ...rest }: InputAttribues) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('')
 
@@ -53,10 +55,10 @@ function Cities() {
             type="text"
             id="cityInput"
             value={selectedCity}
-            placeholder="Where to?"
             onClick={handleInputClick}
             onChange={handleInputChange}
             autoComplete="off"
+            {...rest}
           />
 
           {selectedCity && (
