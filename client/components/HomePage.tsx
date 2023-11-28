@@ -12,7 +12,6 @@ function HomePage() {
         <Link to="/plan">
           <button className="btn start-btn">Start Planning</button>
         </Link>
-        <button className="btn app-btn">Get the app</button>
       </div>
     </>
   )
