@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import Cities from './Cities'
 import SetDate from './SetDate'
 import { useState } from 'react'
-
 import { useAuth0 } from '@auth0/auth0-react'
 
 function Explore() {
