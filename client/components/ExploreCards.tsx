@@ -5,24 +5,22 @@ interface Props {
 }
 
 function ExploreCards(props: Props) {
-  const city = require('../public/city-paris.jpg')
-
   return (
     <>
       <Link to="/places">
-        <img src={String(city)} alt="Paris" />
+        <img src="../public/city-paris.jpg" alt="Paris" />
 
         <p>{`Top places for ${props.city}`}</p>
       </Link>
 
       <Link to="/resturants">
-        <img src="../public/city-paris.jpg" alt="Paris Resturants" />
+        <img src="../public/hotel-paris.jpg" alt="Paris Resturants" />
 
         <p>{`Top places for ${props.city}`}</p>
       </Link>
 
       <Link to="/hotels">
-        <img src="../public/city-paris.jpg" alt="Paris" />
+        <img src="../public/resturant-paris.jpg" alt="Paris" />
 
         <p>{`Top places for ${props.city}`}</p>
       </Link>
