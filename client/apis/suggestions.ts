@@ -10,11 +10,3 @@ export async function getSuggestions(city: string) {
     .set('Content-Type', 'application/json')
   return res.body as Suggestion[]
 }
-
-//post
-export async function userInput(city: string, token: string) {
-  const res = await request
-    .post(`${baseUrl}/${city}`)
-    .set('Authorization', `Bearer ${token}`)
-    .set('Content-Type', 'application/json')
-}
