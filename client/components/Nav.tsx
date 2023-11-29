@@ -20,14 +20,18 @@ function Nav() {
     <>
       <NavGroup>
         <IfAuthenticated>
-          <NavButton onClick={handleSignOut}>Sign out</NavButton>
+          <NavButton className="btn" onClick={handleSignOut}>
+            Sign out
+          </NavButton>
           {user && <p>Signed in as: {user?.nickname}</p>}
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <NavButton onClick={handleSignIn}>Sign in</NavButton>
+          <NavButton className="btn" onClick={handleSignIn}>
+            Sign in
+          </NavButton>
         </IfNotAuthenticated>
       </NavGroup>
-      <h1>Fruit FTW!</h1>
+      <h1>Travel 4 you!</h1>
     </>
   )
 }
