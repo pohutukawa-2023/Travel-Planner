@@ -1,10 +1,11 @@
 # Roles
-Gapson
-Will
-Cong
-Ricky
+Gapson:front-end
+Will:Front-end
+Cong:backend
+Ricky:backend
 
 # user stories
+/: 
 
 #Set time frame
 
