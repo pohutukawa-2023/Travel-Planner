@@ -1,6 +1,7 @@
 export async function up(knex) {
   await knex.schema.createTable('suggestions', (table) => {
     table.increments('id').primary()
+    table.string('name')
     table.string('city_name')
     table.string('category')
     table.string('description')
