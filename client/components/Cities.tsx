@@ -1,14 +1,8 @@
-import { Fab, Zoom } from '@mui/material'
-import { useRef, useState } from 'react'
-import TravelExploreIcon from '@mui/icons-material/TravelExplore'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import React, { useState } from 'react'
 
-function Cities() {
-  const [isExpanded, setExpanded] = useState(false)
+function Cities({ onCitySelect }) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [selectedCity, setSelectedCity] = useState('')
-
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const cities = [
     'Auckland',
@@ -27,26 +21,26 @@ function Cities() {
     setShowDropdown(true)
   }
 
-  function expand() {
-    setExpanded(true)
-  }
-
-  const handleCitySelect = (city: string) => {
+  const handleCitySelect = (city: React.SetStateAction<string>) => {
     setSelectedCity(city)
     setShowDropdown(false)
+    // Pass the selected city back to the parent component
+    onCitySelect(city)
   }
 
   const clearInput = () => {
     setSelectedCity('')
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: {
+    target: { value: React.SetStateAction<string> }
+  }) => {
     setSelectedCity(e.target.value)
   }
 
-  const handleMouseLeave = (e: React.MouseEvent) => {
+  const handleMouseLeave = (e: { target: HTMLElement | null }) => {
     if (
-      !dropdownRef.current?.contains(e.target as Node) &&
+      !e.target.closest('.dropdown') &&
       e.target !== document.getElementById('cityInput')
     ) {
       setShowDropdown(false)
@@ -54,43 +48,40 @@ function Cities() {
   }
 
   return (
-    <>
-      <div className="dropdown" onMouseLeave={handleMouseLeave}>
-        <div className="input-wrapper">
-          <input
-            type="text"
-            id="cityInput"
-            value={selectedCity}
-            placeholder="Where to?"
-            onClick={handleInputClick}
-            onChange={handleInputChange}
-            autoComplete="off"
-          />
+    <div className="dropdown" onMouseLeave={handleMouseLeave}>
+      <div className="input-wrapper">
+        <input
+          type="text"
+          id="cityInput"
+          value={selectedCity}
+          placeholder="Where to?"
+          onClick={handleInputClick}
+          onChange={handleInputChange}
+          autoComplete="off"
+        />
 
-          {selectedCity && (
-            <span className="clear-btn" onClick={clearInput}>
-              &times;
-            </span>
-          )}
+        {selectedCity && (
+          <span className="clear-btn" onClick={clearInput}>
+            &times;
+          </span>
+        )}
 
-          {showDropdown && (
-            <ul className="dropdown-content">
-              {cities.map((city, index) => (
-                <li key={index}>
-                  <button
-                    key={index}
-                    className="city-option"
-                    onClick={() => handleCitySelect(city)}
-                  >
-                    {city}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        {showDropdown && (
+          <ul className="dropdown-content">
+            {cities.map((city, index) => (
+              <li key={index}>
+                <button
+                  className="city-option"
+                  onClick={() => handleCitySelect(city)}
+                >
+                  {city}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </>
+    </div>
   )
 }
 

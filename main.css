@@ -44,6 +44,9 @@
 /* .LandingPageHero__leadContainer {
   min-height: calc(50.4vw vw - 64px);
 } */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
 body {
   font-family: Arial, sans-serif;
