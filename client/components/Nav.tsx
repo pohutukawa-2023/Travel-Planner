@@ -4,7 +4,6 @@ import { NavGroup, NavButton } from './Styled.tsx'
 
 function Nav() {
   const { user, logout, loginWithRedirect } = useAuth0()
-  // TODO: replace placeholder user object with the one from auth0
 
   const handleSignOut = () => {
     logout()

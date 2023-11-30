@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { getSuggestions } from '../apis/suggestions'
 
 function HomePage() {
+  console.log(async () => {
+    await getSuggestions('Auckland')
+  })
   return (
     <>
       <div className="homeContent">
