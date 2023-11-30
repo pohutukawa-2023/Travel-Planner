@@ -18,9 +18,9 @@ function Cities() {
     'New York',
     'Singapore',
     'Dubai',
-    'Tape Town',
-    'Vancouver',
+    'Rome',
     'Istanbul',
+    'Wellington',
   ]
 
   const handleInputClick = () => {
