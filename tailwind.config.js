@@ -2,11 +2,10 @@
 export default {
   content: [],
   theme: {
-    extend: {},
-  },
-  plugins: [],
-
-  container: {
-    center: true,
+    container: {
+      center: true,
+      extend: {},
+    },
+    plugins: [],
   },
 }

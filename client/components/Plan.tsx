@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css'
+import './output.css'
 
 function Plan() {
   return (
