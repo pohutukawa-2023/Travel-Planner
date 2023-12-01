@@ -10,12 +10,12 @@ export interface Suggestion {
   rating: number
   price_range: string
 }
-
-export interface User {
-  auth0_id: string
+export interface UserDraft {
   email: string
   first_name: string
-  last_name: string
+}
+export interface User extends UserDraft {
+  auth0_id: string
 }
 
 export interface TravelDetails {

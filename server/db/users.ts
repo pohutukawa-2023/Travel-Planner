@@ -7,7 +7,6 @@ export async function upsertUser(user: User) {
       auth0_id: user.auth0_id,
       email: user.email,
       first_name: user.first_name,
-      last_name: user.last_name,
     })
     .onConflict('auth0_id')
     .merge()
