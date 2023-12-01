@@ -7,9 +7,9 @@ const router = express.Router()
 
 //POST /api/v1/users
 router.post('/', checkJwt, async (req: JwtRequest, res) => {
-  const auth0Id = req.auth?.sub
+  const auth0_id = req.auth?.sub
   const userDetails = req.body
-  const user = { ...userDetails, auth0Id }
+  const user = { ...userDetails, auth0_id }
   await db.upsertUser(user)
   res.sendStatus(201)
   return
