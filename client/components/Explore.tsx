@@ -2,7 +2,16 @@ import { Link } from 'react-router-dom'
 import Cities from './Cities'
 import SetDate from './SetDate'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
 function Explore() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
+  if (!isAuthenticated) {
+    loginWithRedirect()
+    return null
+  }
+
   return (
     <>
       <h2>Plan a new trip</h2>
