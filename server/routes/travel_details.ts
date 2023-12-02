@@ -21,9 +21,9 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    await db.addTravelDetail(newTravelDetail)
+    const response = await db.addTravelDetail(newTravelDetail)
 
-    res.sendStatus(201)
+    res.status(201).json(response)
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: 'Something wrong' })

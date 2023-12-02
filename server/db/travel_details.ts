@@ -10,12 +10,12 @@ export async function addTravelDetail(
   newTravelDetail: NewTravelDetail,
   db = connection
 ) {
-  return db('travel_details').insert(newTravelDetail)
+  return await db('travel_details').insert(newTravelDetail)
 }
 
 export async function getTravelDetails(
   userId: string,
   db = connection
 ) {
-  return db('travel_details').where('user_id', userId).select()
+  return await db('travel_details').where('user_id', userId).select()
 }

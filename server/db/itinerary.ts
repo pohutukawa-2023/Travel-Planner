@@ -6,5 +6,5 @@ interface NewItinerary {
 }
 
 export async function addItinerary(newItinerary: NewItinerary, db = connection) {
-  return db('itinerary').insert(newItinerary)
+  return await db('itinerary').insert(newItinerary)
 }
