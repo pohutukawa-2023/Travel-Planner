@@ -1,13 +1,14 @@
 import express from 'express'
 
 import * as db from '../db/travel_details'
+import checkJwt, { JwtRequest } from '../auth0.ts'
 
 const router = express.Router()
 
 // POST /api/v1/travelDetail
-router.post('/', async (req, res) => {
-  const auth0Id = req.auth?.payload.sub as string
-  const {newDate, newCity} = req.body
+router.post('/', checkJwt, async (req: JwtRequest, res) => {
+  const auth0Id = req.auth?.sub as string
+  const { newDate, newCity } = req.body
 
   if (!auth0Id) {
     res.status(400).json({ message: 'Please provide an id' })
@@ -31,8 +32,8 @@ router.post('/', async (req, res) => {
 })
 
 // GET /api/v1/travelDetail
-router.get('/', async (req, res) => {
-  const auth0Id = req.auth?.payload.sub as string
+router.get('/', checkJwt, async (req: JwtRequest, res) => {
+  const auth0Id = req.auth?.sub as string
 
   if (!auth0Id) {
     res.status(400).json({ message: 'Please provide an id' })
@@ -50,7 +51,7 @@ router.get('/', async (req, res) => {
 })
 
 // GET /api/v1/travelDetail/:detailId
-router.get('/:detailId', async (req, res) => {
+router.get('/:detailId', checkJwt, async (req, res) => {
   const detailId = Number(req.params.detailId)
 
   if (!detailId) {

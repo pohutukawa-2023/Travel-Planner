@@ -1,11 +1,12 @@
 import express from 'express'
 
 import * as db from '../db/itinerary'
+import checkJwt from '../auth0.ts'
 
 const router = express.Router()
 
 // POST /api/v1/itinerary
-router.post('/', async (req, res) => {
+router.post('/', checkJwt, async (req, res) => {
   const { detailId, suggestionId } = req.body
 
 
