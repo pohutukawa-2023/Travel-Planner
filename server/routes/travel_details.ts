@@ -49,4 +49,23 @@ router.get('/', async (req, res) => {
   }
 })
 
+// GET /api/v1/travelDetail/:detailId
+router.get('/:detailId', async (req, res) => {
+  const detailId = Number(req.params.detailId)
+
+  if (!detailId) {
+    res.status(400).json({ message: 'Please provide an detailId' })
+    return
+  }
+
+  try {
+    const data = await db.getTravelDetailAndSuggestions(detailId)
+
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Something wrong' })
+  }
+})
+
 export default router
