@@ -30,4 +30,23 @@ router.post('/', async (req, res) => {
   }
 })
 
+// GET /api/v1/travelDetail
+router.get('/', async (req, res) => {
+  const auth0Id = req.auth?.payload.sub as string
+
+  if (!auth0Id) {
+    res.status(400).json({ message: 'Please provide an id' })
+    return
+  }
+
+  try {
+    const data = await db.getTravelDetails(auth0Id)
+
+    res.status(200).json(data)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Something wrong' })
+  }
+})
+
 export default router

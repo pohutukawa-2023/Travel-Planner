@@ -12,3 +12,10 @@ export async function addTravelDetail(
 ) {
   return db('travel_details').insert(newTravelDetail)
 }
+
+export async function getTravelDetails(
+  userId: string,
+  db = connection
+) {
+  return db('travel_details').where('user_id', userId).select()
+}
