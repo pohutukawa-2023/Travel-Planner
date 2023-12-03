@@ -5,5 +5,5 @@ export async function getSuggestions(
   city: string,
   db = connection
 ): Promise<Suggestion[]> {
-  return db('suggestions').where('city_name', city).select()
+  return await db('suggestions').where('city_name', city).select()
 }
