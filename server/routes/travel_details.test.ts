@@ -5,6 +5,7 @@ import * as db from '../db/travel_details'
 import { getMockToken } from './mockToken'
 
 vi.mock('../db/travel_details')
+vi.mock('../logger.ts')
 
 describe('POST /api/v1/travelDetail', () => {
   it('should return 201 with an array', async () => {
@@ -18,7 +19,7 @@ describe('POST /api/v1/travelDetail', () => {
   })
 
   it('should return 500 when no access token is passed', async () => {
-    vi.mocked(db.addTravelDetail).mockRejectedValue(new Error('test'))
+    vi.mocked(db.addTravelDetail).mockRejectedValue(new Error('test-travel'))
     const response = await request(server)
       .post('/api/v1/travelDetail')
       .set('authorization', `Bearer ${getMockToken()}`)
@@ -46,7 +47,7 @@ describe('GET /api/v1/travelDetail', () => {
   })
 
   it('should return 500 when no access token is passed', async () => {
-    vi.mocked(db.getTravelDetails).mockRejectedValue(new Error('test'))
+    vi.mocked(db.getTravelDetails).mockRejectedValue(new Error('test-travel'))
     const response = await request(server)
       .get('/api/v1/travelDetail')
       .set('authorization', `Bearer ${getMockToken()}`)
@@ -89,7 +90,9 @@ describe('GET /api/v1/travelDetail/:detailId', () => {
   })
 
   it('should return 500 when no access token is passed', async () => {
-    vi.mocked(db.getTravelDetailAndSuggestions).mockRejectedValue(new Error('test'))
+    vi.mocked(db.getTravelDetailAndSuggestions).mockRejectedValue(
+      new Error('test-travel')
+    )
     const response = await request(server)
       .get('/api/v1/travelDetail/1')
       .set('authorization', `Bearer ${getMockToken()}`)
