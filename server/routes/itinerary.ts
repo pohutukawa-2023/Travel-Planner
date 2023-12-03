@@ -1,14 +1,13 @@
 import express from 'express'
 
 import * as db from '../db/itinerary'
-import checkJwt from '../auth0.ts'
+import { validateAccessToken } from '../auth0.ts'
 
 const router = express.Router()
 
 // POST /api/v1/itinerary
-router.post('/', checkJwt, async (req, res) => {
+router.post('/', validateAccessToken, async (req, res) => {
   const { detailId, suggestionId } = req.body
-
 
   const newItinerary = {
     detail_id: detailId,
