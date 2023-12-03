@@ -7,6 +7,7 @@ function useSuggestions(city: string) {
     queryKey: ['suggestion'],
     queryFn: async () => {
       const response = await getSuggestions(city)
+      console.log(response)
       return response
     },
   })
