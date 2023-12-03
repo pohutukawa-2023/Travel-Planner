@@ -2,6 +2,7 @@ import express from 'express'
 
 import * as db from '../db/itinerary'
 import { validateAccessToken } from '../auth0.ts'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -19,7 +20,7 @@ router.post('/', validateAccessToken, async (req, res) => {
 
     res.sendStatus(201)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })

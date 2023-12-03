@@ -5,6 +5,7 @@ import * as db from '../db/suggestions'
 import { getMockToken } from './mockToken'
 
 vi.mock('../db/suggestions')
+vi.mock('../logger.ts')
 
 describe('GET /api/v1/suggestions/search?city=Auckland', () => {
   it('should return 200 with an array', async () => {
@@ -33,7 +34,9 @@ describe('GET /api/v1/suggestions/search?city=Auckland', () => {
   })
 
   it('should return 500 when no access token is passed', async () => {
-    vi.mocked(db.getSuggestions).mockRejectedValue(new Error('test'))
+    vi.mocked(db.getSuggestions).mockRejectedValue(
+      new Error('test-suggestions')
+    )
     const response = await request(server)
       .get('/api/v1/suggestions/search?city=Auckland')
       .set('authorization', `Bearer ${getMockToken()}`)

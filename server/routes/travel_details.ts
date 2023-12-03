@@ -2,6 +2,7 @@ import express from 'express'
 
 import * as db from '../db/travel_details'
 import { validateAccessToken } from '../auth0.ts'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -26,7 +27,7 @@ router.post('/', validateAccessToken, async (req, res) => {
 
     res.status(201).json(response)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })
@@ -45,7 +46,7 @@ router.get('/', validateAccessToken, async (req, res) => {
 
     res.status(200).json(data)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })
@@ -64,7 +65,7 @@ router.get('/:detailId', validateAccessToken, async (req, res) => {
 
     res.status(200).json(data)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })

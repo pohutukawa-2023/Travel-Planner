@@ -2,6 +2,7 @@ import express from 'express'
 
 import * as db from '../db/suggestions'
 import { validateAccessToken } from '../auth0.ts'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -19,7 +20,7 @@ router.get('/search', validateAccessToken, async (req, res) => {
 
     res.status(200).json(data)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Unable to retrieve suggestions' })
   }
 })
