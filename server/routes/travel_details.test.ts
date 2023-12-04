@@ -8,12 +8,17 @@ vi.mock('../db/travel_details')
 vi.mock('../logger.ts')
 
 describe('POST /api/v1/travelDetail', () => {
+  const fakeTravelDetail = {
+    newDate: '2024',
+    newCity: 'Auckland',
+  }
   it('should return 201 with an array', async () => {
     const fakeResponse = [1]
     vi.mocked(db.addTravelDetail).mockResolvedValue(fakeResponse)
     const response = await request(server)
       .post('/api/v1/travelDetail')
       .set('authorization', `Bearer ${getMockToken()}`)
+      .send(fakeTravelDetail)
     expect(response.status).toBe(201)
     expect(response.body).toEqual(fakeResponse)
   })
@@ -23,8 +28,35 @@ describe('POST /api/v1/travelDetail', () => {
     const response = await request(server)
       .post('/api/v1/travelDetail')
       .set('authorization', `Bearer ${getMockToken()}`)
+      .send(fakeTravelDetail)
     expect(response.status).toBe(500)
     expect(response.body).toEqual({ message: 'Something wrong' })
+  })
+
+  const fakeTravelDetailWithoutNewDate = {
+    newDate: null,
+    newCity: 'Auckland',
+  }
+
+  it('should return 400 when no newDate is passed', async () => {
+    const response = await request(server)
+      .post('/api/v1/itinerary')
+      .set('authorization', `Bearer ${getMockToken()}`)
+      .send(fakeTravelDetailWithoutNewDate)
+    expect(response.status).toBe(400)
+  })
+
+  const fakeTravelDetailWithoutNewCity = {
+    newDate: '2024',
+    newCity: null,
+  }
+
+  it('should return 400 when no newCity is passed', async () => {
+    const response = await request(server)
+      .post('/api/v1/itinerary')
+      .set('authorization', `Bearer ${getMockToken()}`)
+      .send(fakeTravelDetailWithoutNewCity)
+    expect(response.status).toBe(400)
   })
 })
 

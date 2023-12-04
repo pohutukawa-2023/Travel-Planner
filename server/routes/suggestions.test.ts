@@ -44,3 +44,16 @@ describe('GET /api/v1/suggestions/search?city=Auckland', () => {
     expect(response.body).toEqual({ message: 'Unable to retrieve suggestions' })
   })
 })
+
+describe('GET /api/v1/suggestions/search', () => {
+  it('should return 400 when no city is passed', async () => {
+    vi.mocked(db.getSuggestions).mockRejectedValue(
+      new Error('test-suggestions')
+    )
+    const response = await request(server)
+      .get('/api/v1/suggestions/search')
+      .set('authorization', `Bearer ${getMockToken()}`)
+    expect(response.status).toBe(400)
+    expect(response.body).toEqual({ message: 'Please provide a city' })
+  })
+})
