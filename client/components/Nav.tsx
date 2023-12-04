@@ -96,7 +96,7 @@ function Nav() {
           <span className="sr-only">Home</span>
           <img
             className="h-8 w-auto"
-            src="public/images/apple-touch-icon.png"
+            src="images/apple-touch-icon.png"
             alt=""
           />
         </Link>
