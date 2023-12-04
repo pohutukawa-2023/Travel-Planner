@@ -3,6 +3,10 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
 import { NavGroup, NavButton } from './Styled.tsx'
 import { Link } from 'react-router-dom'
 
+import { useState } from 'react'
+import { Dialog } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+
 function Nav() {
   const { user, logout, loginWithRedirect, getAccessTokenSilently } = useAuth0()
 
@@ -16,26 +20,55 @@ function Nav() {
 
   return (
     <>
-      <NavGroup>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-        <Link to="/records">
-          <button>Records</button>
-        </Link>
-        <IfAuthenticated>
-          <NavButton className="btn" onClick={handleSignOut}>
-            Sign out
-          </NavButton>
-          {user && <p>Signed in as: {user?.nickname}</p>}
-        </IfAuthenticated>
-        <IfNotAuthenticated>
-          <NavButton className="btn" onClick={handleSignIn}>
-            Sign in
-          </NavButton>
-        </IfNotAuthenticated>
-      </NavGroup>
-      <h1>Travel 4 you!</h1>
+      <header className="absolute inset-x-0 top-0 z-50">
+        <nav
+          className="flex items-center justify-between p-6 lg:px-8"
+          aria-label="Global"
+        >
+          <div className="flex lg:flex-1">
+            <Link to="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Home</span>
+              <img
+                className="h-8 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
+            </Link>
+          </div>
+
+          <div className="flex lg:hidden"></div>
+
+          <Link to="/records">
+            <button
+              type="button"
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Records
+            </button>
+          </Link>
+
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <IfAuthenticated>
+              <NavButton
+                className="text-sm font-semibold leading-6 text-gray-900"
+                type="button"
+                onClick={handleSignOut}
+              >
+                Sign Out <span aria-hidden="true">&rarr;</span>
+              </NavButton>
+            </IfAuthenticated>
+            <IfNotAuthenticated>
+              <NavButton
+                className="text-sm font-semibold leading-6 text-gray-900"
+                type="button"
+                onClick={handleSignIn}
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </NavButton>
+            </IfNotAuthenticated>
+          </div>
+        </nav>
+      </header>
     </>
   )
 }
