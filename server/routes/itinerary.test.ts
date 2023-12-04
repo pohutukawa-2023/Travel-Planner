@@ -5,6 +5,7 @@ import * as db from '../db/itinerary'
 import { getMockToken } from './mockToken'
 
 vi.mock('../db/itinerary')
+vi.mock('../logger.ts')
 
 describe('POST /api/v1/itinerary', () => {
   it('should return 201', async () => {
@@ -15,7 +16,7 @@ describe('POST /api/v1/itinerary', () => {
   })
 
   it('should return 500 when no access token is passed', async () => {
-    vi.mocked(db.addItinerary).mockRejectedValue(new Error('test'))
+    vi.mocked(db.addItinerary).mockRejectedValue(new Error('test-itinerary'))
     const response = await request(server)
       .post('/api/v1/itinerary')
       .set('authorization', `Bearer ${getMockToken()}`)
