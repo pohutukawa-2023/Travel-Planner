@@ -9,12 +9,30 @@ function Explore() {
   const selectedReturnDate = searchParams.get('selectedReturnDate')
 
   return (
-    <div className="select">
-      <h2>Plan a new trip</h2>
-      <div>Trip to {selectedCity}</div>
-      <div>From {selectedDepartureDate} - </div>
-      <div>{selectedReturnDate}</div>
-    </div>
+    <>
+      <div className="select">
+        <h2>Trip to {selectedCity}</h2>
+        <div>From {selectedDepartureDate} - </div>
+        <div>{selectedReturnDate}</div>
+      </div>
+
+      <div className="explore">
+        <div className="card-container">
+          <div className="card">
+            <h2>Top places for {selectedCity}</h2>
+            <p>Most often seen on the web</p>
+          </div>
+          <div className="card">
+            <h2>Best restaurent in {selectedCity}</h2>
+            <p>Most often seen on the web</p>
+          </div>
+          <div className="card">
+            <h2>Search hotels with transparent pricing</h2>
+            <p>Unlike most sites, we do not sort based on commisions </p>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
