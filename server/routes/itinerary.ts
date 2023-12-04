@@ -1,14 +1,14 @@
 import express from 'express'
 
 import * as db from '../db/itinerary'
-import checkJwt from '../auth0.ts'
+import { validateAccessToken } from '../auth0.ts'
+import { logError } from '../logger'
 
 const router = express.Router()
 
 // POST /api/v1/itinerary
-router.post('/', checkJwt, async (req, res) => {
+router.post('/', validateAccessToken, async (req, res) => {
   const { detailId, suggestionId } = req.body
-
 
   const newItinerary = {
     detail_id: detailId,
@@ -20,7 +20,7 @@ router.post('/', checkJwt, async (req, res) => {
 
     res.sendStatus(201)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })

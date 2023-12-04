@@ -1,13 +1,14 @@
 import express from 'express'
 
 import * as db from '../db/travel_details'
-import checkJwt, { JwtRequest } from '../auth0.ts'
+import { validateAccessToken } from '../auth0.ts'
+import { logError } from '../logger'
 
 const router = express.Router()
 
 // POST /api/v1/travelDetail
-router.post('/', checkJwt, async (req: JwtRequest, res) => {
-  const auth0Id = req.auth?.sub as string
+router.post('/', validateAccessToken, async (req, res) => {
+  const auth0Id = req.auth?.payload.sub as string
   const { newDate, newCity } = req.body
 
   if (!auth0Id) {
@@ -26,14 +27,14 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
 
     res.status(201).json(response)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })
 
 // GET /api/v1/travelDetail
-router.get('/', checkJwt, async (req: JwtRequest, res) => {
-  const auth0Id = req.auth?.sub as string
+router.get('/', validateAccessToken, async (req, res) => {
+  const auth0Id = req.auth?.payload.sub as string
 
   if (!auth0Id) {
     res.status(400).json({ message: 'Please provide an id' })
@@ -45,13 +46,13 @@ router.get('/', checkJwt, async (req: JwtRequest, res) => {
 
     res.status(200).json(data)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })
 
 // GET /api/v1/travelDetail/:detailId
-router.get('/:detailId', checkJwt, async (req, res) => {
+router.get('/:detailId', validateAccessToken, async (req, res) => {
   const detailId = Number(req.params.detailId)
 
   if (!detailId) {
@@ -64,7 +65,7 @@ router.get('/:detailId', checkJwt, async (req, res) => {
 
     res.status(200).json(data)
   } catch (error) {
-    console.error(error)
+    logError(error)
     res.status(500).json({ message: 'Something wrong' })
   }
 })
