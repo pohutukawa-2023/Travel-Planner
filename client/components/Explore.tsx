@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import SelectedInfo from './SelectedPlan'
+import SelectTrip from './SelectTrip'
 import { useSearchParams } from 'react-router-dom'
 
 function Explore() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const selectedCity = searchParams.get('selectedCity')
-  const selectedDepartureDate = searchParams.get('selectedDepartureDate')
-  const selectedReturnDate = searchParams.get('selectedReturnDate')
+  // const selectedCity = searchParams.get('selectedCity')
+  const selectedCity = searchParams.get('city')
+  // const selectedDepartureDate = searchParams.get('selectedDepartureDate')
+  const selectedDepartureDate = searchParams.get('start')
+  // const selectedReturnDate = searchParams.get('selectedReturnDate')
+  const selectedReturnDate = searchParams.get('end')
+  console.log(searchParams)
 
   return (
     <>
