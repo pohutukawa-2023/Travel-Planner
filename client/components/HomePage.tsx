@@ -4,6 +4,7 @@ import useSuggestions from '../hooks/useSuggestions'
 
 function HomePage() {
   const { data } = useSuggestions('Auckland')
+  console.log(data)
   return (
     <>
       {/* <RecordsPage /> */}
