@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom'
+// import RecordsPage from './RecordsPage'
+import useSuggestions from '../hooks/useSuggestions'
 
 function HomePage() {
+  const { data } = useSuggestions('Auckland')
+  console.log(data)
   return (
     <>
+      {/* <RecordsPage /> */}
       <div className="homeContent">
         <h2>You will never travel without our trip planner again</h2>
         <h3>
