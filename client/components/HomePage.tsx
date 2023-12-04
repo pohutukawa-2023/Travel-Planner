@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
-import useSuggestions from '../hooks/useSuggestions'
 
 function HomePage() {
-  const { data } = useSuggestions('Auckland')
-  console.log(data)
   return (
     <>
       <div className="homeContent">
