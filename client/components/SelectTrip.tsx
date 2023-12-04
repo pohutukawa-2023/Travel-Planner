@@ -27,7 +27,6 @@ function SelectTrip() {
     'Wellington',
   ]
 
-  const { addMutation } = useTravelDetails()
   const { getAccessTokenSilently } = useAuth0()
 
   async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -62,7 +61,78 @@ function SelectTrip() {
   }
 
   return (
-    <div>
+    <div className="container mx-auto py-8 ">
+      <form
+        onSubmit={handleFormSubmit}
+        className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-lg"
+      >
+        <div className="mb-4 text-lg">
+          <label
+            htmlFor="cities"
+            className="block mb-2 text-lg font-semibold text-gray-900"
+          >
+            Select a city
+          </label>
+          <select
+            id="cities"
+            className="form-select block w-3/4 px-4 py-2 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            name="selectedCity"
+          >
+            {cities.map((city, index) => (
+              <option key={index} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="departureDate"
+            className="block mb-2 text-lg font-semibold text-gray-900"
+          >
+            From:
+          </label>
+          <input
+            type="date"
+            id="departureDate"
+            name="departureDate"
+            className="form-input block w-3/4 rounded-lg"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="returnDate"
+            className="block mb-2 text-lg font-semibold text-gray-900"
+          >
+            To:
+          </label>
+          <input
+            type="date"
+            id="returnDate"
+            name="returnDate"
+            className="form-input block w-3/4 rounded-lg"
+          />
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Start planning
+          </button>
+        </div>
+      </form>
+    </div>
+  )
+}
+
+export default SelectTrip
+
+{
+  /* <div>
       <form onSubmit={handleFormSubmit}>
         <div>
           <label
@@ -99,8 +169,5 @@ function SelectTrip() {
           </div>
         </div>
       </form>
-    </div>
-  )
+    </div> */
 }
-
-export default SelectTrip
