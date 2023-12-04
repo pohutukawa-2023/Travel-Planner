@@ -30,3 +30,8 @@ export interface Itinerary {
   travel_detail_id: number
   suggestion_id: number
 }
+
+export interface newTrip {
+  date: string
+  city: string
+}

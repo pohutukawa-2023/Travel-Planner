@@ -2,6 +2,7 @@ import express from 'express'
 
 import * as db from '../db/travel_details'
 import checkJwt, { JwtRequest } from '../auth0.ts'
+import moment from 'moment'
 
 const router = express.Router()
 
@@ -15,6 +16,7 @@ router.post('/', checkJwt, async (req: JwtRequest, res) => {
     return
   }
 
+  const days = moment.duration(end.diff(start))
   const newTravelDetail = {
     user_id: auth0Id,
     date: newDate,

@@ -1,6 +1,11 @@
 import { InputHTMLAttributes, useRef, useState } from 'react'
+import { newTrip } from '../../models/ClientSuggestion'
 
 type InputAttribues = InputHTMLAttributes<HTMLInputElement>
+
+interface Props {
+  handleSubmit: (form: newTrip) => void
+}
 
 function Cities({ ...rest }: InputAttribues) {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -82,6 +87,14 @@ function Cities({ ...rest }: InputAttribues) {
               ))}
             </ul>
           )}
+
+          <select>
+            {cities.map((city, index) => (
+              <option key={index} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     </>
