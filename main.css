@@ -131,3 +131,59 @@ body {
   font-size: 14px;
   color: #999;
 }
+.select {
+  background-color: #008cff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  padding: 15px;
+  margin-top: 45px;
+}
+.result {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  padding: 16px;
+  margin: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.citie {
+  font-size: 25px;
+  padding-top: 20px;
+  text-align: center;
+}
+.date {
+  font-size: 12px;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+}
+.start {
+  margin-top: 25px;
+  padding-left: 10rem;
+}
+h2 {
+  text-align: center;
+}
+.time {
+  display: flex;
+  flex-direction: row;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+input {
+  display: flex;
+  flex-direction: column;
+}

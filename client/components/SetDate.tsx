@@ -17,7 +17,7 @@ function SetDate({ onDepartureDateSelect, onReturnDateSelect }) {
   }
 
   return (
-    <div>
+    <div className="time">
       <form>
         <label htmlFor="departureDate">Departure Date:</label>
         <input

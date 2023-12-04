@@ -1,30 +1,34 @@
-import { Link } from 'react-router-dom'
-import Cities from './Cities'
-import SetDate from './SetDate'
-
-import { useAuth0 } from '@auth0/auth0-react'
+import React, { useState } from 'react'
+import SelectedInfo from './SelectedPlan'
 
 function Explore() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const [submittedData, setSubmittedData] = useState(null)
 
-  if (!isAuthenticated) {
-    loginWithRedirect()
-    return null
+  const handleSubmittedData = (
+    city: any,
+    departureDate: any,
+    returnDate: any
+  ) => {
+    setSubmittedData({
+      city,
+      departureDate,
+      returnDate,
+    })
   }
 
   return (
-    <div>
+    <div className="select">
       <h2>Plan a new trip</h2>
-      <Cities />
-
-      <SetDate />
-
-      <Link to="/explore">
-        <button type="button" className="btn start-btn">
-          Start planning
-        </button>
-      </Link>
-    </>
+      <SelectedInfo onSubmittedData={handleSubmittedData} />
+      {submittedData && (
+        <div className="result">
+          <div className="citie">Trip to {submittedData.city}</div>
+          <div className="date">
+            Date {submittedData.departureDate} - {submittedData.returnDate}
+          </div>
+        </div>
+      )}
+    </div>
   )
 }
 

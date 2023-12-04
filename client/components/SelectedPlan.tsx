@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import SetDate from './SetDate'
 import Cities from './Cities'
+// import { Link } from 'react-router-dom'
 
 function SelectedInfo({ onSubmittedData }) {
   const [selectedCity, setSelectedCity] = useState('')
@@ -27,13 +28,22 @@ function SelectedInfo({ onSubmittedData }) {
   }
 
   return (
-    <div>
-      <Cities onCitySelect={handleCitySelect} />
-      <SetDate
-        onDepartureDateSelect={handleDepartureDateSelect}
-        onReturnDateSelect={handleReturnDateSelect}
-      />
-      <button onClick={handleSubmit}>Submit</button>
+    <div className="container">
+      <div className="form">
+        <Cities onCitySelect={handleCitySelect} />
+        <SetDate
+          onDepartureDateSelect={handleDepartureDateSelect}
+          onReturnDateSelect={handleReturnDateSelect}
+        />
+      </div>
+
+      <div className="start">
+        {/* <Link to="/plan"> */}
+        <button onClick={handleSubmit} type="button" className="btn start-btn">
+          Start planning
+        </button>
+        {/* </Link> */}
+      </div>
     </div>
   )
 }
