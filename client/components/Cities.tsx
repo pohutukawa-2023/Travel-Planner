@@ -58,6 +58,7 @@ function Cities({ onCitySelect }) {
           onClick={handleInputClick}
           onChange={handleInputChange}
           autoComplete="off"
+          required
         />
 
         {selectedCity && (
