@@ -1,29 +1,42 @@
-import { Link } from 'react-router-dom'
-import Cities from './Cities'
-import SetDate from './SetDate'
-
-import { useAuth0 } from '@auth0/auth0-react'
+import React, { useState } from 'react'
+import SelectedInfo from './SelectedPlan'
+import SelectTrip from './SelectTrip'
+import { useSearchParams } from 'react-router-dom'
 
 function Explore() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
-
-  if (!isAuthenticated) {
-    loginWithRedirect()
-    return null
-  }
+  const [searchParams, setSearchParams] = useSearchParams()
+  // const selectedCity = searchParams.get('selectedCity')
+  const selectedCity = searchParams.get('city')
+  // const selectedDepartureDate = searchParams.get('selectedDepartureDate')
+  const selectedDepartureDate = searchParams.get('start')
+  // const selectedReturnDate = searchParams.get('selectedReturnDate')
+  const selectedReturnDate = searchParams.get('end')
+  console.log(searchParams)
 
   return (
     <>
-      <h2>Plan a new trip</h2>
-      <Cities />
+      <div className="select">
+        <h2>Trip to {selectedCity}</h2>
+        <div>From {selectedDepartureDate} - </div>
+        <div>{selectedReturnDate}</div>
+      </div>
 
-      <SetDate />
-
-      <Link to="/explore">
-        <button type="button" className="btn start-btn">
-          Start planning
-        </button>
-      </Link>
+      <div className="explore">
+        <div className="card-container">
+          <div className="card">
+            <h2>Top places for {selectedCity}</h2>
+            <p>Most often seen on the web</p>
+          </div>
+          <div className="card">
+            <h2>Best restaurent in {selectedCity}</h2>
+            <p>Most often seen on the web</p>
+          </div>
+          <div className="card">
+            <h2>Search hotels with transparent pricing</h2>
+            <p>Unlike most sites, we do not sort based on commisions </p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
