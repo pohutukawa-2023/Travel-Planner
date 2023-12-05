@@ -24,14 +24,17 @@ function Explore() {
       <div className="explore">
         <div className="card-container">
           <div className="card">
+            <img src="" alt="" />
             <h2>Top places for {selectedCity}</h2>
             <p>Most often seen on the web</p>
           </div>
           <div className="card">
+            <img src="" alt="" />
             <h2>Best restaurent in {selectedCity}</h2>
             <p>Most often seen on the web</p>
           </div>
           <div className="card">
+            <img src="" alt="" />
             <h2>Search hotels with transparent pricing</h2>
             <p>Unlike most sites, we do not sort based on commisions </p>
           </div>
