@@ -6,27 +6,39 @@ interface Props {
     rating: string
     openingHours: string
     priceRange: string
+    link: string
   }
 }
 
 function Card(props: Props) {
-  const { name, address, description, rating, openingHours, priceRange } =
+  const { name, address, description, rating, openingHours, priceRange, link } =
     props.item
+
+  function handleAddButton() {
+    console.log('add ')
+  }
   return (
     <>
       <p>
-        Name: {name}
+        <strong>Name: </strong>
+        {name}
         <br />
-        Address: {address}
+        <strong>Address:</strong> {address}
         <br />
-        Description: {description}
+        <strong>Description:</strong> {description}
         <br />
-        Rating: {rating}
+        <strong>Rating:</strong> {rating}
         <br />
-        Opening Hours: {openingHours}
+        <strong>Opening Hours:</strong>
+        {openingHours ? openingHours : 'Not available'}
         <br />
-        Price Range: $ {priceRange}
+        <strong>Price range:</strong>
+        {priceRange ? priceRange : 'Not available'}
+        <br />
+        <a href={link}>Official website</a>
       </p>
+
+      <button onClick={handleAddButton}>Add to trip</button>
     </>
   )
 }
