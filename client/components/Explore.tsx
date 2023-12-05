@@ -6,6 +6,7 @@ import useSuggestions from '../hooks/useSuggestions'
 function Explore() {
   const [searchParams] = useSearchParams()
   const selectedCity = searchParams.get('city')
+  const tripId = searchParams.get('tripId')
   const lowerCaseCity = selectedCity?.toLowerCase()
 
   const selectedDepartureDate = searchParams.get('start')
@@ -32,7 +33,7 @@ function Explore() {
         </div>
 
         <div className="card-container">
-          <Link to={`/explore/places?city=${selectedCity}`}>
+          <Link to={`/explore/places?city=${selectedCity}&tripId=${tripId}`}>
             <div className="card">
               <img
                 src={`/images/${selectedCity}/${lowerCaseCity}-place.jpg`}
@@ -42,7 +43,9 @@ function Explore() {
               <p>Most often seen on the web</p>
             </div>
           </Link>
-          <Link to={`/explore/restaurants?city=${selectedCity}`}>
+          <Link
+            to={`/explore/restaurants?city=${selectedCity}&tripId=${tripId}`}
+          >
             <div className="card">
               <img
                 src={`/images/${selectedCity}/${lowerCaseCity}-hotel.jpg`}
@@ -52,7 +55,7 @@ function Explore() {
               <p>Most often seen on the web</p>
             </div>
           </Link>
-          <Link to={`/explore/hotels?city=${selectedCity}`}>
+          <Link to={`/explore/hotels?city=${selectedCity}&tripId=${tripId}`}>
             <div className="card">
               <img
                 src={`/images/${selectedCity}/${lowerCaseCity}-restaurent.jpg`}

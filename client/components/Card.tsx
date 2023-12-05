@@ -1,5 +1,11 @@
+import { useAuth0 } from '@auth0/auth0-react'
+
+import { addNewItinerary } from '../apis/itinerary'
+
 interface Props {
+  tripId: number
   item: {
+    id: number
     name: string
     address: string
     description: string
@@ -11,11 +17,28 @@ interface Props {
 }
 
 function Card(props: Props) {
-  const { name, address, description, rating, openingHours, priceRange, link } =
-    props.item
+  const { getAccessTokenSilently } = useAuth0()
+  const {
+    id,
+    name,
+    address,
+    description,
+    rating,
+    openingHours,
+    priceRange,
+    link,
+  } = props.item
 
-  function handleAddButton() {
+  const tripId = props.tripId
+
+  async function handleAddButton() {
+    const accessToken = await getAccessTokenSilently()
     console.log('add ')
+    const newItinerary = {
+      detailId: tripId,
+      suggestionId: id,
+    }
+    await addNewItinerary(newItinerary, accessToken)
   }
   return (
     <>
