@@ -14,18 +14,17 @@ function Explore() {
   return (
     <>
       <div className="explore">
-        <div className="select">
-          <div className="image-container">
-            <img
-              src={`/images/${selectedCity}/${selectedCity}-city.jpg`}
-              alt={selectedCity || ''}
-            />
-            <div className="overlay">
-              <div className="top-half">
-                <h2>Trip to {selectedCity}</h2>
-                <div>
-                  From {selectedDepartureDate} - {selectedReturnDate}
-                </div>
+        <div className="bg-sky-300 ">
+          <img
+            src={`/images/${selectedCity}/${selectedCity}-city.jpg`}
+            alt={selectedCity || ''}
+            className="object-fill h-48 w-96"
+          />
+          <div className="overlay">
+            <div className="top-half">
+              <h2>Trip to {selectedCity}</h2>
+              <div>
+                From {selectedDepartureDate} - {selectedReturnDate}
               </div>
             </div>
           </div>
