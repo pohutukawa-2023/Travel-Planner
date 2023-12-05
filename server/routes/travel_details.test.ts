@@ -9,8 +9,9 @@ vi.mock('../logger.ts')
 
 describe('POST /api/v1/travelDetail', () => {
   const fakeTravelDetail = {
-    newDate: '2024',
-    newCity: 'Auckland',
+    start_date: '2024',
+    end_date: '2024',
+    city: 'Auckland',
   }
   it('should return 201 with an array', async () => {
     const fakeResponse = [1]
