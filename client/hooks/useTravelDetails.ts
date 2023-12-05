@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
-import { getSuggestions } from '../apis/suggestions'
 import { addTravelDetails, getTravelDetails } from '../apis/traveDetails'
 import { AddTravelDetails } from '../../models/ClientSuggestion'
 

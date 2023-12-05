@@ -12,6 +12,17 @@ export async function getTravelDetails(token: string) {
   return res.body as TravelDetails[]
 }
 
+export async function getTravelDetailWithId(
+  travelDetailId: number,
+  token: string
+) {
+  const res = await request
+    .get(`${baseUrl}/${travelDetailId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
+
 //Post travel deatails
 export async function addTravelDetails(
   token: string,
