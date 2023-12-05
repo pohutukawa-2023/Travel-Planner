@@ -10,6 +10,16 @@ const router = express.Router()
 router.post('/', validateAccessToken, async (req, res) => {
   const { detailId, suggestionId } = req.body
 
+  if (!detailId) {
+    res.status(400).json({ message: 'Please provide a detailId' })
+    return
+  }
+
+  if (!suggestionId) {
+    res.status(400).json({ message: 'Please provide a suggestionId' })
+    return
+  }
+
   const newItinerary = {
     detail_id: detailId,
     suggestion_id: suggestionId,

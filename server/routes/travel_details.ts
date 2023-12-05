@@ -16,6 +16,16 @@ router.post('/', validateAccessToken, async (req, res) => {
     return
   }
 
+  if (!newDate) {
+    res.status(400).json({ message: 'Please provide a newDate' })
+    return
+  }
+
+  if (!newCity) {
+    res.status(400).json({ message: 'Please provide a newCity' })
+    return
+  }
+
   const newTravelDetail = {
     user_id: auth0Id,
     date: newDate,
@@ -54,11 +64,6 @@ router.get('/', validateAccessToken, async (req, res) => {
 // GET /api/v1/travelDetail/:detailId
 router.get('/:detailId', validateAccessToken, async (req, res) => {
   const detailId = Number(req.params.detailId)
-
-  if (!detailId) {
-    res.status(400).json({ message: 'Please provide an detailId' })
-    return
-  }
 
   try {
     const data = await db.getTravelDetailAndSuggestions(detailId)
