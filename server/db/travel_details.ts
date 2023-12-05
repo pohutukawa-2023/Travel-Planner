@@ -2,7 +2,8 @@ import connection from './connection.ts'
 
 interface NewTravelDetail {
   user_id: string
-  date: string
+  start_date: string
+  end_date: string
   city: string
 }
 
@@ -13,10 +14,7 @@ export async function addTravelDetail(
   return await db('travel_details').insert(newTravelDetail)
 }
 
-export async function getTravelDetails(
-  userId: string,
-  db = connection
-) {
+export async function getTravelDetails(userId: string, db = connection) {
   return await db('travel_details').where('user_id', userId).select()
 }
 
@@ -24,7 +22,10 @@ export async function getTravelDetailAndSuggestions(
   travelDetailId: number,
   db = connection
 ) {
-  const travelDetail = await db('travel_details').where('id', travelDetailId).select().first()
+  const travelDetail = await db('travel_details')
+    .where('id', travelDetailId)
+    .select()
+    .first()
   const suggestions = await db('suggestions')
     .select()
     .whereExists(function () {
@@ -33,7 +34,6 @@ export async function getTravelDetailAndSuggestions(
         .whereRaw('itinerary.suggestion_id = suggestions.id')
         .andWhere('itinerary.detail_id', travelDetailId)
     })
-
 
   const response = {
     travelDetail: travelDetail,
