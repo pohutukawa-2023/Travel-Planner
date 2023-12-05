@@ -2,8 +2,6 @@ import useTravelDetails from '../hooks/useTravelDetails'
 
 function Records() {
   const { data } = useTravelDetails()
-  data?.map((element) => console.log(element))
-  // console.log('travel Details: ' + data)
 
   return (
     <>
