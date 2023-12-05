@@ -1,10 +1,3 @@
-export interface FruitSnakeCase {
-  id?: number
-  name: string
-  average_grams_each: number
-  added_by_user?: string
-}
-
 export interface Suggestion {
   id: number
   name: string
@@ -16,9 +9,4 @@ export interface Suggestion {
   link: string
   rating: number
   price_range: string
-}
-
-export interface FruitData {
-  name: string
-  averageGramsEach: number
 }

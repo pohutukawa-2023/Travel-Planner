@@ -9,28 +9,28 @@ const router = express.Router()
 // POST /api/v1/travelDetail
 router.post('/', validateAccessToken, async (req, res) => {
   const auth0Id = req.auth?.payload.sub as string
-  const { newStartDate, newEndDate, newCity } = req.body
+  const { start_date, end_date, city } = req.body
 
   if (!auth0Id) {
     res.status(400).json({ message: 'Please provide an id' })
     return
   }
 
-  if (!newStartDate) {
+  if (!start_date) {
     res.status(400).json({ message: 'Please provide a newStartDate' })
     return
   }
 
-  if (!newCity) {
+  if (!city) {
     res.status(400).json({ message: 'Please provide a newCity' })
     return
   }
 
   const newTravelDetail = {
     user_id: auth0Id,
-    start_date: newStartDate,
-    end_date: newEndDate,
-    city: newCity,
+    start_date: start_date,
+    end_date: end_date,
+    city: city,
     // date: newStartDate + '~' + newEndDate,
   }
 
