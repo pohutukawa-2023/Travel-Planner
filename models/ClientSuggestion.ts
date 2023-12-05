@@ -21,7 +21,16 @@ export interface User {
 export interface TravelDetails {
   id: number
   auth0_id: string
-  date: string
+  start_date: string
+  end_date: string
+  city: string
+}
+
+export interface AddTravelDetails {
+  // id: number
+
+  start_date: string
+  end_date: string
   city: string
 }
 

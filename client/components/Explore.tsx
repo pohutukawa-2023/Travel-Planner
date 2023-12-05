@@ -9,6 +9,7 @@ function Explore() {
   const selectedCity = searchParams.get('city')
   // const selectedDepartureDate = searchParams.get('selectedDepartureDate')
   const selectedDepartureDate = searchParams.get('start')
+  console.log(selectedDepartureDate)
   // const selectedReturnDate = searchParams.get('selectedReturnDate')
   const selectedReturnDate = searchParams.get('end')
 

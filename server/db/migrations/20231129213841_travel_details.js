@@ -3,6 +3,8 @@ export async function up(knex) {
     table.increments('id').primary()
     table.string('user_id')
     table.string('date')
+    table.string('start_date')
+    table.string('end_date')
     table.string('city')
   })
 }
