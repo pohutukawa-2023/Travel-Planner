@@ -2,7 +2,7 @@ import request from 'superagent'
 
 import { Suggestion } from '../../models/ClientSuggestion'
 
-const baseUrl = 'api/v1/suggestions'
+const baseUrl = '/api/v1/suggestions'
 
 export async function getSuggestions(city: string, token: string) {
   const res = await request
