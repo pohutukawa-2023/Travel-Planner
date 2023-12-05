@@ -1,17 +1,16 @@
 import React, { useState } from 'react'
-import SelectedInfo from './SelectedPlan'
 import SelectTrip from './SelectTrip'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import useSuggestions from '../hooks/useSuggestions'
 
 function Explore() {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   // const selectedCity = searchParams.get('selectedCity')
   const selectedCity = searchParams.get('city')
   // const selectedDepartureDate = searchParams.get('selectedDepartureDate')
   const selectedDepartureDate = searchParams.get('start')
   // const selectedReturnDate = searchParams.get('selectedReturnDate')
   const selectedReturnDate = searchParams.get('end')
-  console.log(searchParams)
 
   return (
     <>
@@ -23,18 +22,24 @@ function Explore() {
 
       <div className="explore">
         <div className="card-container">
-          <div className="card">
-            <h2>Top places for {selectedCity}</h2>
-            <p>Most often seen on the web</p>
-          </div>
-          <div className="card">
-            <h2>Best restaurent in {selectedCity}</h2>
-            <p>Most often seen on the web</p>
-          </div>
-          <div className="card">
-            <h2>Search hotels with transparent pricing</h2>
-            <p>Unlike most sites, we do not sort based on commisions </p>
-          </div>
+          <Link to={`/explore/places?city=${selectedCity}`}>
+            <div className="card">
+              <h2>Top places for {selectedCity}</h2>
+              <p>Most often seen on the web</p>
+            </div>
+          </Link>
+          <Link to={`/explore/restaurants?city=${selectedCity}`}>
+            <div className="card">
+              <h2>Best restaurents in {selectedCity}</h2>
+              <p>Most often seen on the web</p>
+            </div>
+          </Link>
+          <Link to={`/explore/hotels?city=${selectedCity}`}>
+            <div className="card">
+              <h2>Search hotels with transparent pricing</h2>
+              <p>Unlike most sites, we do not sort based on commisions </p>
+            </div>
+          </Link>
         </div>
       </div>
     </>

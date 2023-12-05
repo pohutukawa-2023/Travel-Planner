@@ -3,7 +3,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated.tsx'
 import { NavGroup, NavButton } from './Styled.tsx'
 
 function Nav() {
-  const { user, logout, loginWithRedirect } = useAuth0()
+  const { user, logout, loginWithRedirect, getAccessTokenSilently } = useAuth0()
 
   const handleSignOut = () => {
     logout()
