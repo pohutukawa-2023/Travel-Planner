@@ -16,7 +16,6 @@ function Restaurants() {
 
   return (
     <>
-      show restaurants for {city}
       <SuggestionsCard data={restaurants} category="restaurants" />
     </>
   )

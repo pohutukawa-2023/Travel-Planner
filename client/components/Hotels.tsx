@@ -14,7 +14,6 @@ function Hotels() {
 
   return (
     <>
-      show hotels for {city}
       <SuggestionsCard data={hotels} category="hotels" />
     </>
   )

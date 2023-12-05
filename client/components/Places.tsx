@@ -14,7 +14,6 @@ function Places() {
 
   return (
     <>
-      show places for {city}
       <SuggestionsCard data={places} category="places" />
     </>
   )
