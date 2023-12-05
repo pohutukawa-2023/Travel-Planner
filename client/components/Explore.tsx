@@ -8,10 +8,7 @@ function Explore() {
   const selectedCity = searchParams.get('city')
   const lowerCaseCity = selectedCity?.toLowerCase()
 
-  console.log(lowerCaseCity)
-
   const selectedDepartureDate = searchParams.get('start')
-  // const selectedReturnDate = searchParams.get('selectedReturnDate')
   const selectedReturnDate = searchParams.get('end')
 
   return (
