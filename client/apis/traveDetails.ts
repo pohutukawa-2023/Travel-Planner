@@ -17,7 +17,7 @@ export async function addTravelDetails(
   token: string,
   addTripDetail: AddTravelDetails
 ) {
-  await request
+  return await request
     .post(`${baseUrl}`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')

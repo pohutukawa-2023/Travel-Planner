@@ -5,6 +5,7 @@ import useSuggestions from '../hooks/useSuggestions'
 function Restaurants() {
   const [searchParams] = useSearchParams()
   const city = searchParams.get('city')
+  const tripId = Number(searchParams.get('tripId'))
   const { data } = useSuggestions(city || '')
   const restaurants = data?.filter(
     (suggestion) => suggestion.category == 'restaurant'
@@ -16,7 +17,11 @@ function Restaurants() {
 
   return (
     <>
-      <SuggestionsCard data={restaurants} category="restaurants" />
+      <SuggestionsCard
+        tripId={tripId}
+        data={restaurants}
+        category="restaurants"
+      />
     </>
   )
 }
