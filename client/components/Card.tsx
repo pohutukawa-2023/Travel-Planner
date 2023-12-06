@@ -42,7 +42,7 @@ function Card(props: Props) {
     }
     await addNewItinerary(newItinerary, accessToken)
 
-    setIsAdded(true)
+    setIsAdded(!isAdded)
   }
   return (
     <>
@@ -62,11 +62,24 @@ function Card(props: Props) {
         <strong>Price range:</strong>
         {priceRange ? priceRange : 'Not available'}
         <br />
-        <a href={link}>Official website</a>
+        <a
+          className="text-blue-500 hover:text-blue-700"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={link}
+        >
+          Official website
+        </a>
       </p>
 
-      <button onClick={handleAddButton}>{isAdded ? '❤️' : '♡'}</button>
-
+      <button
+        className={`text-4xl p-2 rounded-full ${
+          isAdded ? 'text-red-500' : 'text-gray-500'
+        }`}
+        onClick={handleAddButton}
+      >
+        {isAdded ? '❤️' : '♡'}
+      </button>
     </>
   )
 }
