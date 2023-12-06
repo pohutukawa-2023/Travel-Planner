@@ -4,11 +4,15 @@ import Nav from './Nav.tsx'
 
 export default function AppLayout() {
   return (
-    <div className="bg-slate-400">
-      <Nav />
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    <>
+      <div className="bg-white flex flex-col">
+        <div>
+          <Nav />
+        </div>
+        <main>
+          <Outlet />
+        </main>
+      </div>
+    </>
   )
 }

@@ -66,6 +66,7 @@ function Card(props: Props) {
       </p>
 
       <button onClick={handleAddButton}>{isAdded ? '❤️' : '♡'}</button>
+
     </>
   )
 }
