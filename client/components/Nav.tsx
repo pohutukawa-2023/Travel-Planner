@@ -96,16 +96,17 @@ function Nav() {
           <span className="sr-only">Home</span>
           <img
             className="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="public/images/apple-touch-icon.png"
             alt=""
           />
         </Link>
-
-        <div className="flex space-x-3 text-2xl font-bold mb-3">
-          <Link to="/records" className="text-slate-500 hover:text-blue-600">
-            Records
-          </Link>
-        </div>
+        <IfAuthenticated>
+          <div className="flex space-x-3 text-2xl font-bold mb-3">
+            <Link to="/records" className="text-slate-500 hover:text-blue-600">
+              Records
+            </Link>
+          </div>
+        </IfAuthenticated>
 
         <div className="hidden lg:flex lg:items-center lg:space-x-4">
           <IfAuthenticated>
