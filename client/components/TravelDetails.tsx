@@ -26,6 +26,19 @@ function TravelDetails() {
     return <p>something went wrong</p>
   }
 
+  function getCategoryStyle(category: string) {
+    switch (category) {
+      case 'place':
+        return 'bg-green-200'
+      case 'restaurant':
+        return 'bg-yellow-200'
+      case 'hotel':
+        return 'bg-blue-200'
+      default:
+        return ''
+    }
+  }
+
   return (
     <div className="max-w-2xl mx-auto mt-8 container mx-auto p-4">
       <h2 className="text-3xl font-bold mb-4 text-2xl font-bold mb-4 text-center">My travel</h2>
@@ -35,12 +48,12 @@ function TravelDetails() {
         <p className="text-lg font-semibold mb-2">From {data.travelDetail.start_date} to {data.travelDetail.end_date}</p>
       </div>
       <br /><br />
-      
+
       <h2 className="text-xl font-bold my-4 text-center">My stops</h2>
-      <hr /><br/>
+      <hr /><br />
       <ul className="list-none p-0 grid gap-4 text-center">
         {data.suggestions?.map((d: Suggestion) => (
-          <li key={d.id} className="mb-4 border p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300">
+          <li key={d.id} className={`mb-4 border p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300 ${getCategoryStyle(d.category)}`}>
             <p>
               <span className="font-bold"></span>
               <a href={d.link} className="text-blue-500 hover:underline text-lg">
