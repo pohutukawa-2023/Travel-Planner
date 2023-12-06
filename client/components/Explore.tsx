@@ -33,7 +33,9 @@ function Explore() {
             <h2 className="text-2xl font-bold text-gray-900">Explore</h2>
 
             <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-              <Link to={`/explore/place?city=${selectedCity}`}>
+              <Link
+                to={`/explore/places?city=${selectedCity}&tripId=${tripId}`}
+              >
                 <div className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
@@ -52,7 +54,9 @@ function Explore() {
                 </div>
               </Link>
 
-              <Link to={`/explore/hotel?city=${selectedCity}`}>
+              <Link
+                to={`/explore/hotels?city=${selectedCity}&tripId=${tripId}`}
+              >
                 <div className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
@@ -71,7 +75,9 @@ function Explore() {
                 </div>
               </Link>
 
-              <Link to={`/explore/restaurants?city=${selectedCity}`}>
+              <Link
+                to={`/explore/restaurants?city=${selectedCity}&tripId=${tripId}`}
+              >
                 <div className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
