@@ -23,3 +23,14 @@ export async function addTravelDetails(
     .set('Content-Type', 'application/json')
     .send(addTripDetail)
 }
+
+export async function getTravelDetailWithSuggestions(
+  travelId: number,
+  token: string
+) {
+  const res = await request
+    .get(`${baseUrl}/${travelId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
