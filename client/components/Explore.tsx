@@ -44,12 +44,12 @@ function Explore() {
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
-                  <h3 className="mt-6 text-sm text-gray-500">
-                    <span className="absolute inset-0" />
+                  <h3 className="mt-6 text-lg font-semibold text-gray-900">
+                    <span className="absolute  inset-0" />
                     Top places for {selectedCity}
                   </h3>
-                  <p className="text-base font-semibold text-gray-900">
-                    Most often seen on the web
+                  <p className="text-base  text-gray-500">
+                    Notable places you must go in {selectedCity}
                   </p>
                 </div>
               </Link>
@@ -65,12 +65,12 @@ function Explore() {
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
-                  <h3 className="mt-6 text-sm text-gray-500">
+                  <h3 className="mt-6 text-lg font-semibold text-gray-900">
                     <span className="absolute inset-0" />
-                    Search hotels with transparent pricing {selectedCity}
+                    Search hotels for {selectedCity}
                   </h3>
-                  <p className="text-base font-semibold text-gray-900">
-                    Unlike most sites, we do not sort based on commisions
+                  <p className="text-base  text-gray-500">
+                    Popular hotels in {selectedCity}
                   </p>
                 </div>
               </Link>
@@ -86,12 +86,12 @@ function Explore() {
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
-                  <h3 className="mt-6 text-sm text-gray-500">
+                  <h3 className="mt-6 text-lg font-semibold text-gray-900">
                     <span className="absolute inset-0" />
-                    Best restaurents in {selectedCity}
+                    Best restaurants in {selectedCity}
                   </h3>
-                  <p className="text-base font-semibold text-gray-900">
-                    Most often seen on the web
+                  <p className="text-base  text-gray-500">
+                    The hottest restaurants in {selectedCity}
                   </p>
                 </div>
               </Link>
