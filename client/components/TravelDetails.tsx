@@ -27,20 +27,23 @@ function TravelDetails() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-8">
-      <h2 className="text-3xl font-bold mb-4">Travel Details</h2>
-      <h3 className="text-xl font-bold mb-2">My Travel</h3>
-      <p>City: {data.travelDetail.city}</p>
-      <p>Start Date: {data.travelDetail.start_date}</p>
-      <p>End Date: {data.travelDetail.end_date}</p>
-
-      <h3 className="text-xl font-bold my-4">My Stops</h3>
-      <ul className="list-disc pl-4">
+    <div className="max-w-2xl mx-auto mt-8 container mx-auto p-4">
+      <h2 className="text-3xl font-bold mb-4 text-2xl font-bold mb-4 text-center">My travel</h2>
+      <hr />
+      <div className="mb-6 text-center">
+        <p className="text-lg font-semibold mb-2">To {data.travelDetail.city}</p>
+        <p className="text-lg font-semibold mb-2">From {data.travelDetail.start_date} to {data.travelDetail.end_date}</p>
+      </div>
+      <br /><br />
+      
+      <h2 className="text-xl font-bold my-4 text-center">My stops</h2>
+      <hr /><br/>
+      <ul className="list-none p-0 grid gap-4 text-center">
         {data.suggestions?.map((d: Suggestion) => (
-          <li key={d.id} className="mb-4">
+          <li key={d.id} className="mb-4 border p-4 rounded-lg shadow-md hover:shadow-xl transition duration-300">
             <p>
-              <span className="font-bold">Name:</span>{' '}
-              <a href={d.link} className="text-blue-500 hover:underline">
+              <span className="font-bold"></span>
+              <a href={d.link} className="text-blue-500 hover:underline text-lg">
                 {d.name}
               </a>
             </p>
@@ -54,6 +57,9 @@ function TravelDetails() {
         ))}
       </ul>
     </div>
+
+
+
   )
 }
 
