@@ -53,13 +53,9 @@ function SelectTrip() {
       return
     }
 
-    // mutate here
-    // addMutation.mutate({ token: accessToken, addTripDetail: result.data })
-
     const resId = await addTravelDetails(accessToken, result.data)
     console.log(resId.body[0])
 
-    // then we navigate to a new client-side route
     navigate(
       `/explore?city=${city}&start=${startDateInput}&end=${endDateInput}&tripId=${resId.body[0]}`
     )
