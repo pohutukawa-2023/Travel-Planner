@@ -4,6 +4,7 @@ import useTravelDetails from '../hooks/useTravelDetails'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { z } from 'zod'
+import { addTravelDetails } from '../apis/traveDetails'
 
 const tripSchema = z.object({
   city: z.string(),
@@ -53,11 +54,14 @@ function SelectTrip() {
     }
 
     // mutate here
-    addMutation.mutate({ token: accessToken, addTripDetail: result.data })
+    // addMutation.mutate({ token: accessToken, addTripDetail: result.data })
+
+    const resId = await addTravelDetails(accessToken, result.data)
+    console.log(resId.body[0])
 
     // then we navigate to a new client-side route
     navigate(
-      `/explore?city=${city}&start=${startDateInput}&end=${endDateInput}`
+      `/explore?city=${city}&start=${startDateInput}&end=${endDateInput}&tripId=${resId.body[0]}`
     )
   }
 

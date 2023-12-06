@@ -5,6 +5,7 @@ import AppLayout from './components/AppLayout.tsx'
 import HomePage from './components/HomePage.tsx'
 
 import Explore from './components/Explore.tsx'
+import TravelDetails from './components/TravelDetails.tsx'
 
 import SelectTrip from './components/SelectTrip.tsx'
 import Places from './components/Places.tsx'
@@ -21,5 +22,6 @@ export const routes = createRoutesFromElements(
     <Route path="/explore/places" element={<Places />} />
     <Route path="/explore/hotels" element={<Hotels />} />
     <Route path="/explore/restaurants" element={<Restaurants />} />
+    <Route path="/my-travel/:travelId" element={<TravelDetails />} />
   </Route>
 )

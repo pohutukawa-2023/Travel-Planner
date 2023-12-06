@@ -1,5 +1,12 @@
+import { useAuth0 } from '@auth0/auth0-react'
+
+import { addNewItinerary } from '../apis/itinerary'
+import { useState } from 'react'
+
 interface Props {
+  tripId: number
   item: {
+    id: number
     name: string
     address: string
     description: string
@@ -11,11 +18,31 @@ interface Props {
 }
 
 function Card(props: Props) {
-  const { name, address, description, rating, openingHours, priceRange, link } =
-    props.item
+  const [isAdded, setIsAdded] = useState(false)
+  const { getAccessTokenSilently } = useAuth0()
+  const {
+    id,
+    name,
+    address,
+    description,
+    rating,
+    openingHours,
+    priceRange,
+    link,
+  } = props.item
 
-  function handleAddButton() {
+  const tripId = props.tripId
+
+  async function handleAddButton() {
+    const accessToken = await getAccessTokenSilently()
     console.log('add ')
+    const newItinerary = {
+      detailId: tripId,
+      suggestionId: id,
+    }
+    await addNewItinerary(newItinerary, accessToken)
+
+    setIsAdded(true)
   }
   return (
     <>
@@ -38,13 +65,8 @@ function Card(props: Props) {
         <a href={link}>Official website</a>
       </p>
 
-      <button
-        onClick={handleAddButton}
-        type="button"
-        className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-      >
-        Add to trip
-      </button>
+      <button onClick={handleAddButton}>{isAdded ? '❤️' : '♡'}</button>
+
     </>
   )
 }
