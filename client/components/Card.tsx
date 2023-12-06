@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { addNewItinerary } from '../apis/itinerary'
+import { useState } from 'react'
 
 interface Props {
   tripId: number
@@ -17,6 +18,7 @@ interface Props {
 }
 
 function Card(props: Props) {
+  const [isAdded, setIsAdded] = useState(false)
   const { getAccessTokenSilently } = useAuth0()
   const {
     id,
@@ -39,6 +41,8 @@ function Card(props: Props) {
       suggestionId: id,
     }
     await addNewItinerary(newItinerary, accessToken)
+
+    setIsAdded(true)
   }
   return (
     <>
@@ -61,7 +65,7 @@ function Card(props: Props) {
         <a href={link}>Official website</a>
       </p>
 
-      <button onClick={handleAddButton}>Add to trip</button>
+      <button onClick={handleAddButton}>{isAdded ? '❤️' : '♡'}</button>
     </>
   )
 }
